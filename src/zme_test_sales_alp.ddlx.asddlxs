@@ -1,0 +1,128 @@
+@Metadata.layer: #PARTNER
+
+@UI.chart: [{
+                qualifier: 'DefaultChat',
+                chartType: #COLUMN,
+                description: 'Sales Info',
+                dimensions: [ 'SalesORg' ],
+                measures: [ 'Netprice' ],
+                dimensionAttributes: [{ dimension: 'SalesORg', role: #SERIES }],
+                measureAttributes: [{ measure: 'Netprice', role: #AXIS_1 }]
+             },
+             {
+             qualifier: 'VisualDate' ,
+             chartType: #BAR,
+             description: 'Month / Year Sales',
+             dimensions: [ 'DOCUMENT_MONYEAR' ],
+             measures: [ 'Netprice' ],
+             dimensionAttributes: [{ dimension: 'DOCUMENT_MONYEAR', role: #SERIES }],
+             measureAttributes: [{ measure: 'Netprice', role: #AXIS_1 }]
+             },
+                          {
+             qualifier: 'VisualDivision' ,
+             chartType: #DONUT,
+             description: 'Division Sales',
+             dimensions: [ 'Division' ],
+             measures: [ 'Netprice' ],
+             dimensionAttributes: [{ dimension: 'Division', role: #SERIES }],
+             measureAttributes: [{ measure: 'Netprice', role: #AXIS_1 }]
+             },
+                          {
+             qualifier: 'VisualDistibutionchanel' ,
+             chartType: #LINE,
+             description: 'Distibution chanel Sales',
+             dimensions: [ 'distibutionchannel' ],
+             measures: [ 'Netprice' ],
+             dimensionAttributes: [{ dimension: 'distibutionchannel', role: #SERIES }],
+             measureAttributes: [{ measure: 'Netprice', role: #AXIS_1 }]
+             }
+             ]
+
+@UI.presentationVariant: [
+{
+  qualifier: 'Default',visualizations: [{ type: #AS_CHART, qualifier: 'DefaultChat' }]
+ },
+{
+  qualifier: 'VisualDateFilter', visualizations: [{ type: #AS_CHART,qualifier: 'VisualDate' }]
+ },
+{
+ qualifier: 'VisualDivisionFilter', visualizations: [{ type: #AS_CHART,qualifier: 'VisualDivision' }]
+ },
+{
+ qualifier: 'VisualDistibutionchannelfilter', visualizations: [{ type: #AS_CHART,qualifier: 'VisualDistibutionchanel' }]
+ }
+                    ]
+
+
+@UI.selectionVariant: [
+
+ {
+ qualifier: 'Default' ,text: 'Default'
+ }
+ ]
+
+@UI.selectionPresentationVariant: [
+{ qualifier: 'Default', presentationVariantQualifier: 'Default' ,selectionVariantQualifier: 'Default' }
+]
+
+annotate view ZTEST_SALES_ALP with
+{
+
+
+  @UI: { lineItem: [{ position: 10, label: 'Sales Document Number' }]
+
+       }
+  SalesDocument;
+  @UI: { lineItem: [{ position: 20, label: 'Item Number' }]  }
+
+  Item;
+
+  @UI: { lineItem: [{ position: 30, label: 'Sales Organization' }],
+
+       selectionField: [{ position: 10 }]
+     }
+  SalesORg;
+
+  @UI: { lineItem: [{ position: 40, label: 'Plant' }],
+
+        selectionField: [{ position: 20 }]
+     }
+  Palnt;
+
+  @UI: { lineItem: [{ position: 50, label: 'Division' }],
+         selectionField: [{ position: 40 }]
+     }
+  Division;
+
+  @UI: { lineItem: [{ position: 60, label: 'Distibution Channel' }],
+         selectionField: [{ position: 50 }]
+     }
+  distibutionchannel;
+
+  @UI: { lineItem: [{ position: 70, label: 'Gross Weight' }]
+
+     }
+  GrossWeight;
+
+  @UI: { lineItem: [{ position: 80, label: 'Net Price' }]
+
+     }
+  Netprice;
+
+  @UI: { lineItem: [{ position: 90, label: 'Currency' }]
+
+     }
+  Currency;
+
+  @UI: { lineItem: [{ position: 95, label: 'Document Date' }]
+
+     }
+  documentDate;
+
+  @UI: { lineItem: [{ position: 100, label: 'Month / Year' }],
+
+        selectionField: [{ position: 30 }]
+     }
+  DOCUMENT_MONYEAR;
+
+}

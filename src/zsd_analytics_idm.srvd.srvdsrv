@@ -1,0 +1,4 @@
+@EndUserText.label: 'SERVICE DEFINITION FOR ANALYTICS IDM APP'
+define service ZSD_ANALYTICS_idm {
+  expose ZIDM_ODR_ANALYTICS;
+}

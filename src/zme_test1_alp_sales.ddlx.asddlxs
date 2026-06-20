@@ -1,0 +1,95 @@
+@Metadata.layer: #PARTNER
+
+@UI.chart: [{
+                qualifier: 'ChatDefault',
+                description: 'Sales Org Details',
+                chartType: #COLUMN,
+                dimensions: [ 'SalesORg' ],
+                measures: [ 'Netprice' ],
+                dimensionAttributes: [{ dimension: 'SalesORg', role: #SERIES  }],
+                measureAttributes: [{ measure: 'Netprice', role: #AXIS_1 }]
+             }]
+
+@UI.presentationVariant: [{ qualifier: 'Default', visualizations: [{ qualifier: 'ChatDefault', type: #AS_CHART }] }]
+
+annotate entity ZTEST1_ALP_SALES with
+{
+
+  @UI.facet: [{ type: #IDENTIFICATION_REFERENCE,
+                purpose: #STANDARD,
+                position: 10,
+                label: 'Sales Data',
+                id: 'SalesData'
+               }]
+
+  @UI:{ lineItem: [{ position: 10, label: 'Sales Document' }],
+        identification: [{ position: 10, label: 'Sales Document' }]
+
+  }
+  SalesDocument;
+
+  @UI:{ lineItem: [{ position: 20, label: 'ITEM' }],
+     identification: [{  position: 20, label: 'ITEM' }]
+
+  }
+  Item;
+
+  @UI:{ lineItem: [{ position: 30, label: 'Sales org' }],
+     identification: [{position: 30, label: 'Sales org'  }],
+     selectionField: [{ position: 10 }]
+
+  }
+  SalesORg;
+
+  @UI:{ lineItem: [{ position: 40, label: 'Plant' }],
+     identification: [{position: 40, label: 'Plant'  }]
+
+  }
+  Palnt;
+
+  @UI:{ lineItem: [{ position: 50, label: 'Division' }],
+     identification: [{position: 50, label: 'Division'  }],
+      selectionField: [{ position: 20 }]
+
+  }
+  Division;
+
+  @UI:{ lineItem: [{ position: 60, label: 'Distibution Chanel' }],
+     identification: [{position: 60, label: 'Distibution Chanel'  }],
+      selectionField: [{ position: 30 }]
+
+  }
+  distibutionchannel;
+
+  @UI:{ lineItem: [{ position: 70, label: 'Gross Weight' }],
+     identification: [{position: 70, label: 'Gross Weight'  }]
+
+  }
+  GrossWeight;
+
+  @UI:{ lineItem: [{ position: 80, label: 'NetPrice' }],
+     identification: [{ position: 80, label: 'NetPrice' }]
+
+  }
+  Netprice;
+
+  @UI:{ lineItem: [{ position: 90, label: 'Currency' }],
+     identification: [{ position: 90, label: 'Currency' }]
+
+  }
+  Currency;
+
+  @UI:{ lineItem: [{ position: 95, label: 'Document Date' }],
+     identification: [{ position: 95, label: 'Document Date' }]
+
+  }
+  documentDate;
+
+  @UI:{ lineItem: [{ position: 100, label: 'Month / Year' }],
+        identification: [{ position: 100, label: 'Month / Year' }],
+        selectionField: [{ position: 40 }]
+
+  }
+  DOCUMENT_MONYEAR;
+
+}

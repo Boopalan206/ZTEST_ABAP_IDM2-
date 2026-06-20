@@ -1,0 +1,6 @@
+@EndUserText.label: 'SERVICE DEFINITION FOR ANALYTICS'
+define service ZSD_ANALYTICS_01 {
+  expose ZANALYTIC_CUST;
+  expose ZANALYTIC_ORDER;
+  expose ZTEST_SALES_ALP;
+}
